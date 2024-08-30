@@ -16,7 +16,7 @@ class ParcelIDRequest extends BaseRequest
     {
         $client = new Client();
 
-        $request = $client->createRequest($this->method, 'https://api.brt.it/rest/v1/' . $this->endpoint . '/' . $parcelID);
+        $request = $client->createRequest($this->method, 'https://api.brt.it/rest/v1/'.$this->endpoint.'/'.$parcelID);
         $request->addHeader('userID', $this->account['userID']);
         $request->addHeader('password', $this->account['password']);
 
@@ -30,5 +30,4 @@ class ParcelIDRequest extends BaseRequest
 
         return new ParcelIDResponse($response);
     }
-
 }
