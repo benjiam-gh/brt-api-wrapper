@@ -14,13 +14,17 @@ class ParcelIDRequest extends BaseRequest
 
     public function callWithPath($parcelID)
     {
-        $client = new Client();
+        $client = new Client([
+            'base_uri' => 'https://api.brt.it/rest/v1/',
+            'timeout' => 5.0
+        ]);
 
-        $request = $client->createRequest($this->method, 'https://api.brt.it/rest/v1/'.$this->endpoint.'/'.$parcelID);
-        $request->addHeader('userID', $this->account['userID']);
-        $request->addHeader('password', $this->account['password']);
-
-        $response = $client->send($request);
+        $response = $client->request($this->method, $this->endpoint . '/' . $parcelID,  [
+            'headers' =>  [
+                'userID' => $this->account['userID'],
+                'password' => $this->account['password']
+            ]
+        ]);
 
         $response = json_decode($response->getBody());
 
