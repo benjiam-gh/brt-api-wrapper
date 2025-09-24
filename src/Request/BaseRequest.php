@@ -53,7 +53,7 @@ abstract class BaseRequest implements RequestInterface
     {
         $client = new Client([
             'base_uri' => 'https://api.brt.it/rest/v1/',
-            'timeout' => 2.0
+            'timeout' => 15.0
         ]);
 
         $response = $client->request($this->method, $this->endpoint, [
