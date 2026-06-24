@@ -240,6 +240,11 @@ class CreateRequest extends BaseRequest
      */
     private $pudoId;
 
+    /**
+     * @var string
+     */
+    private $expiryDate;
+
     public function call()
     {
         return new CreateResponse(parent::call());
@@ -310,7 +315,8 @@ class CreateRequest extends BaseRequest
                 'packingListPDFName' => $this->packingListPDFName,
                 'packingListPDFFlagPrint' => $this->packingListPDFFlagPrint,
                 'packingListPDFFlagEmail' => $this->packingListPDFFlagEmail,
-                'pudoId' => $this->pudoId], function ($v) { return !is_null($v); })
+                'pudoId' => $this->pudoId,
+                'expiryDate' => $this->expiryDate], function ($v) { return !is_null($v); })
             ,
             'isLabelRequired' => $this->isLabelRequired,
             'labelParameters' => $this->labelParameters->toArray()
@@ -736,6 +742,16 @@ class CreateRequest extends BaseRequest
     public function setPudoId($pudoId)
     {
         $this->pudoId = $pudoId;
+        return $this;
+    }
+
+    /**
+     * @param string $expiryDate
+     * @return CreateRequest
+     */
+    public function setExpiryDate($expiryDate)
+    {
+        $this->expiryDate = $expiryDate;
         return $this;
     }
 
