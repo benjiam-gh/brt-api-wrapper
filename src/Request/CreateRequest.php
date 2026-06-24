@@ -243,6 +243,11 @@ class CreateRequest extends BaseRequest
     /**
      * @var string
      */
+    private $brtServiceCode;
+
+    /**
+     * @var string
+     */
     private $expiryDate;
 
     public function call()
@@ -316,6 +321,7 @@ class CreateRequest extends BaseRequest
                 'packingListPDFFlagPrint' => $this->packingListPDFFlagPrint,
                 'packingListPDFFlagEmail' => $this->packingListPDFFlagEmail,
                 'pudoId' => $this->pudoId,
+                'brtServiceCode' => $this->brtServiceCode,
                 'expiryDate' => $this->expiryDate], function ($v) { return !is_null($v); })
             ,
             'isLabelRequired' => $this->isLabelRequired,
@@ -770,5 +776,29 @@ class CreateRequest extends BaseRequest
     public function getConsignee()
     {
         return $this->consignee;
+    }
+
+    /**
+     * Get the value of brtServiceCode
+     *
+     * @return  string
+     */ 
+    public function getBrtServiceCode()
+    {
+        return $this->brtServiceCode;
+    }
+
+    /**
+     * Set the value of brtServiceCode
+     *
+     * @param  string  $brtServiceCode
+     *
+     * @return  self
+     */ 
+    public function setBrtServiceCode(string $brtServiceCode)
+    {
+        $this->brtServiceCode = $brtServiceCode;
+
+        return $this;
     }
 }
