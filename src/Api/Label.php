@@ -19,11 +19,27 @@ class Label
      */
     public $stream;
 
-    public function __construct($dataLength, $parcelID, $stream)
-    {
+    /**
+     * @var string
+     */
+    public $trackingByParcelID;
 
+    /**
+     * @var string
+     */
+    public $parcelNumberGeoPost;
+
+    public function __construct(
+        $dataLength,
+        $parcelID,
+        $stream,
+        $trackingByParcelID = null,
+        $parcelNumberGeoPost = null
+    ) {
         $this->dataLength = $dataLength;
         $this->parcelID = $parcelID;
-        $this->stream = base64_decode($stream);
+        $this->trackingByParcelID = $trackingByParcelID;
+        $this->parcelNumberGeoPost = $parcelNumberGeoPost;
+        $this->stream = $stream !== null ? base64_decode($stream) : null;
     }
 }

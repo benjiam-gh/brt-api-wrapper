@@ -46,7 +46,13 @@ class BaseResponse
                     case 'labels':
                         $labels = [];
                         foreach ($value->label as $label) {
-                            $labels[] = new Label($label->dataLength, $label->parcelID, $label->stream);
+                            $labels[] = new Label(
+                                $label->dataLength ?? null,
+                                $label->parcelID ?? null,
+                                $label->stream ?? null,
+                                $label->trackingByParcelID ?? null,
+                                $label->parcelNumberGeoPost ?? null
+                            );
                         }
                         $value = $labels;
                         break;
